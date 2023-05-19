@@ -19,22 +19,23 @@ export default function Header() {
   const controlNavBar = () => {
     if (window.scrollY > 200) {
       if (window.scrollY > lastScrollY && !mobileMenu) {
-        setShow("-translate-y-[80px]")
+        setShow("-translate-y-[80px]");
       } else {
-        setShow("shadow-sm")
+        setShow("shadow-sm");
       }
     } else {
-      setShow("translate-y-0")
+      setShow("translate-y-0");
     }
-    setLastScrollY(window.scrollY)
+    setLastScrollY(window.scrollY);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", controlNavBar);
     return () => {
       window.removeEventListener("scroll", controlNavBar);
-    }
-  }, [])
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastScrollY]);
 
   return (
     <header
@@ -44,8 +45,14 @@ export default function Header() {
         <Link href="/">
           <GiCat className="w-[40px] md:w-[60px]" size={35} />
         </Link>
-        <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu}/>
-        {mobileMenu && <MenuMobile showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} setMobileMenu={setMobileMenu} />}
+        <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
+        {mobileMenu && (
+          <MenuMobile
+            showCatMenu={showCatMenu}
+            setShowCatMenu={setShowCatMenu}
+            setMobileMenu={setMobileMenu}
+          />
+        )}
 
         <div className="flex items-center gap-2 text-black">
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
