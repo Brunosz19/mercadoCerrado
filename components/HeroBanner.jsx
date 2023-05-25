@@ -3,6 +3,7 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { BiArrowBack } from "react-icons/bi";
+import Cat from "../public/gatoDos.png";
 
 const HeroBanner = () => {
   return (
@@ -20,7 +21,7 @@ const HeroBanner = () => {
         </div>
         <div>
           <img
-            src="../public/gatoDos.png"
+            src={Cat}
             className="aspect-[16/10] md:as"
             alt="Gato color negro"
           />
